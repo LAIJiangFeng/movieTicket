@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.film.mapper.FilmMapper">
+    
+    <resultMap type="Film" id="FilmResult">
+    	<id     property="id"            column="id"      />
+        <result property="name"          column="name"    />
+        <result property="eName"         column="e_name"     />
+        <result property="type"          column="type"   />
+        <result property="director"      column="director"    />
+        <result property="vImg"          column="v_img"      />
+        <result property="poster"        column="poster"    />
+        <result property="pImg"          column="p_img"      />
+        <result property="star"          column="star"    />
+        <result property="version"       column="version"    />
+        <result property="describe"      column="describe"    />
+        <result property="score"         column="score"    />
+        <result property="pNumber"       column="p_number"    />
+        <result property="src"           column="src"    />
+        <result property="language"      column="language"    />
+        <result property="duration"      column="duration"    />
+        <result property="released"      column="released"    />
+        <result property="releaseDate"   column="release_date"    />
+        <result property="price"   column="price"    />
+        <result property="status"        column="status"    />
+    </resultMap>
+    
+    <sql id="selectFilmVo">
+        select id, `name`, e_name, `type`, director, v_img, poster, p_img, star, version,`describe`,score,p_number,src,`language`,duration,released,release_date,price,status
+		from f_film
+    </sql>
+    
+    <select id="selectFilmList" parameterType="Film" resultMap="FilmResult">
+        <include refid="selectFilmVo"/>
+        <where>
+            <if test="name != null and name != ''">
+                AND name like concat('%', #{name}, '%')
+            </if>
+            <if test="eName != null and eName != ''">
+                AND e_name  like concat('%', #{eName}, '%')
+            </if>
+            <if test="type != null and type != ''">
+                AND type =#{type}
+            </if>
+            <if test="director != null and director != ''">
+                AND director =#{director}
+            </if>
+            <if test="star != null and star != ''">
+                AND star like concat('%', #{star}, '%')
+            </if>
+            <if test="version != null and version != ''">
+                AND version =#{version}
+            </if>
+            <if test="score != null and score != ''">
+                AND score =#{score}
+            </if>
+            <if test="src != null and src != ''">
+                AND src =#{src}
+            </if>
+            <if test="language != null and language != ''">
+                AND language =#{language}
+            </if>
+            <if test="released != null ">
+                AND released =#{released}
+            </if>
+            <if test="price != null">
+                AND price =#{price}
+            </if>
+            <if test="status != null and status != ''">
+                AND status =#{status}
+            </if>
+            <if test="params.beginTime != null and params.beginTime != ''"><!-- 开始时间检索 -->
+                and date_format(release_date,'%y%m%d') &gt;= date_format(#{params.beginTime},'%y%m%d')
+            </if>
+            <if test="params.endTime != null and params.endTime != ''"><!-- 结束时间检索 -->
+                and date_format(release_date,'%y%m%d') &lt;= date_format(#{params.endTime},'%y%m%d')
+            </if>
+        </where>
+        order by id desc
+    </select>
+    
+    <select id="selectFilmById" parameterType="Long" resultMap="FilmResult">
+        <include refid="selectFilmVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertFilm" parameterType="Film">
+        insert into f_film
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name != null and name != '' ">`name`,</if>
+            <if test="eName != null and eName != '' ">e_name,</if>
+            <if test="type != null and type != '' ">`type`,</if>
+            <if test="director != null and director != '' ">director,</if>
+            <if test="vImg != null and vImg != ''">v_img,</if>
+            <if test="poster != null and poster != ''">poster,</if>
+            <if test="pImg != null and pImg != ''">p_img,</if>
+            <if test="star != null and star != ''">star,</if>
+            <if test="version != null and version != ''">version,</if>
+            <if test="describe != null and describe != ''">`describe`,</if>
+            <if test="score != null and score != ''">score,</if>
+            <if test="pNumber != null and pNumber != ''">p_number,</if>
+            <if test="src != null and src != ''">src,</if>
+            <if test="language != null and language != ''">`language`,</if>
+            <if test="duration != null and duration != ''">duration,</if>
+            <if test="released != null">released,</if>
+            <if test="releaseDate != null and releaseDate != ''">release_date,</if>
+            <if test="price != null">price,</if>
+            <if test="status != null and status != ''">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="name != null and name != ''">#{name},</if>
+			<if test="eName != null and eName != ''">#{eName},</if>
+			<if test="type != null and type != ''">#{type},</if>
+			<if test="director != null and director != ''">#{director},</if>
+			<if test="vImg != null and vImg != ''">#{vImg},</if>
+			<if test="poster != null and poster != ''">#{poster},</if>
+            <if test="pImg != null and pImg != ''">#{pImg},</if>
+            <if test="star != null and star != ''">#{star},</if>
+            <if test="version != null and version != ''">#{version},</if>
+            <if test="describe != null and describe != ''">#{describe},</if>
+            <if test="score != null and score != ''">#{score},</if>
+            <if test="pNumber != null and pNumber != ''">#{pNumber},</if>
+            <if test="src != null and src != ''">#{src},</if>
+            <if test="language != null and language != ''">#{language},</if>
+            <if test="duration != null and duration != ''">#{duration},</if>
+            <if test="released != null">#{released},</if>
+            <if test="releaseDate != null and releaseDate != ''">#{releaseDate},</if>
+            <if test="price != null">#{price},</if>
+            <if test="status != null and status != ''">#{status},</if>
+        </trim>
+    </insert>
+	 
+    <update id="updateFilm" parameterType="Film">
+        update f_film
+        <set>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="eName != null and eName != ''">e_name = #{eName},</if>
+            <if test="type != null and type != '' ">`type`= #{type},</if>
+            <if test="director != null and director != '' ">director= #{director},</if>
+            <if test="vImg != null and vImg != ''">v_img= #{vImg},</if>
+            <if test="poster != null and poster != ''">poster= #{poster},</if>
+            <if test="pImg != null and pImg != ''">p_img= #{pImg},</if>
+            <if test="star != null and star != ''">star= #{star},</if>
+            <if test="version != null and version != ''">version= #{version},</if>
+            <if test="describe != null and describe != ''">`describe`= #{describe},</if>
+            <if test="score != null and score != ''">score= #{score},</if>
+            <if test="pNumber != null and pNumber != ''">p_number= #{pNumber},</if>
+            <if test="src != null and src != ''">src= #{src},</if>
+            <if test="language != null and language != ''">`language`= #{language},</if>
+            <if test="duration != null and duration != ''">duration= #{duration},</if>
+            <if test="releaseDate != null and releaseDate != ''">release_date= #{releaseDate},</if>
+            <if test="released!=null">`released`= #{released},</if>
+            <if test="price!=null">`price`= #{price},</if>
+            <if test="status != null and status != ''">status= #{status},</if>
+        </set>
+        where id = #{id}
+    </update>
+	
+    <delete id="deleteFilmById" parameterType="Long">
+        delete from f_film where id = #{id}
+    </delete>
+    
+    <delete id="deleteFilmByIds" parameterType="Long">
+        delete from f_film where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+        	#{id}
+        </foreach>
+    </delete>
+    
+    <select id="selectAllFilmBuildOption" resultType="com.ruoyi.film.domain.vo.SelectVo">
+        select `name` as label, id as `value`
+        from f_film
+    </select>
+
+    <select id="selectFilmTypeCount" resultType="com.ruoyi.film.domain.vo.PieChartVo">
+        select `type` as name, count(*) as `value`
+        from f_film
+        group by type
+    </select>
+</mapper>

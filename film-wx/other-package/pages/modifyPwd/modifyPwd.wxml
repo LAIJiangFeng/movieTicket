@@ -1,0 +1,21 @@
+<wux-toptips id="wux-toptips" />
+<view class="container">
+  <form class="form" bindsubmit="subimtPwd">
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>原密码</text>
+      <input type="text" placeholder="请输入原密码" name="oldPwd" placeholder-class="placeholder-style" value="{{oldPwd}}" class="input" />
+    </view>
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>新密码</text>
+      <input type="text" placeholder="请输入新密码" name="newPwd" placeholder-class="placeholder-style" value="{{newPwd}}" class="input" />
+    </view>
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>确认密码</text>
+      <input type="text" placeholder="请输入确认密码" name="confirmPwd" placeholder-class="placeholder-style" value="{{confirmPwd}}" class="input" />
+    </view>
+    <view class="submit">
+      <button form-type="submit" class="button_change">修改</button>
+    </view>
+  </form>
+</view>
+

@@ -1,0 +1,28 @@
+<!-- 收藏 -->
+<view class="container">
+  <!-- 电影 -->
+  <view class="film-body">
+    <view class="film"  wx:for="{{film}}" wx:if="{{film.length>0}}" wx:key="index" mut-bind:tap="goDetails" id="{{item.filmId}}">
+      <view  id="{{item.id}}" class="film-item">
+        <view>
+          <image src="{{url}}{{item.vImg}}" class="film_img" ></image>
+        </view>
+        <view class="film_name" id="{{item.id}}">{{item.name}} </view>
+        <view class="film_price"><text style="color: red;">{{item.totalPrice}}</text>元</view>
+        <view class="film_score">猫眼评分  {{item.score}} <text class="film_type">{{item.type}}</text> <text class="film_version">中国巨幕{{item.version}}</text></view>
+        <view class="film_star">主演:{{item.star}}</view>
+        <view class="film_pNumber"><text>{{item.createTime}}</text></view>
+        
+        <view class="film-btn btn-color" data-item="{{item}}" mut-bind:tap="evaluate">评价</view>
+        <view class="film_count"><text>{{item.seat}}座</text><text>{{item.count}}张</text></view>
+      </view>
+    </view>
+    <view class="film" wx:if="{{film.length===0}}">
+      <!-- <view style="font-size:40rpx;text-align:center;">暂无数据...</view> -->
+      <view class="iconfont .icon-kongzhuangtai" style="font-size: 100rpx;text-align: center;margin-top: 15px;"></view>
+      <view  style="text-align: center;margin-top: 5px;">暂无订单</view>
+    </view>
+    <view  style="color: silver;text-align: center;" wx:if="{{loadAll}}">----------暂无更多----------</view>
+  </view>
+</view>
+

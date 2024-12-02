@@ -1,0 +1,38 @@
+<view class="container">
+    <form class="form" bindsubmit="subimt">
+        <view class="input_view">
+            <text class="text"><text class="sign">*</text>手机</text>
+            <input type="text" placeholder="请输入手机" name="phone" placeholder-class="placeholder-style" value="{{phone}}" disabled="{{disabled}}" class="input" />
+        </view>
+        <wux-radio-group name="b" value="{{ temperatureStatus }}" title="目前体温" bind:change="changeTemperature">
+            <wux-radio title="正常"  value="正常"  disabled="{{disabled}}"/>
+            <wux-radio title="异常"  value="异常"  disabled="{{disabled}}"/>
+        </wux-radio-group>
+        <wux-radio-group name="b" value="{{ bodyStatus }}" title="身体状况" bind:change="changeBody">
+            <wux-radio title="无异常" value="无异常" disabled="{{disabled}}"/>
+            <wux-radio title="有异常" value="有异常" disabled="{{disabled}}"/>
+        </wux-radio-group>
+        <wux-radio-group name="b" value="{{ healthCodeColor }}" title="健康码颜色" bind:change="changeHealthCode">
+            <wux-radio title="绿色"  value="绿色" disabled="{{disabled}}"/>
+            <wux-radio title="黄色"  value="黄色" disabled="{{disabled}}"/>
+            <wux-radio title="红色"  value="红色" disabled="{{disabled}}"/>
+        </wux-radio-group>
+        <wux-radio-group name="b" value="{{ inoculationStatus }}" title="疫苗接种情况" bind:change="changeInoculation">
+            <wux-radio title="无"  value="无" disabled="{{disabled}}"/>
+            <wux-radio title="一针" value="一针" disabled="{{disabled}}"/>
+            <wux-radio title="二针"  value="二针" disabled="{{disabled}}"/>
+            <wux-radio title="加强针" value="加强针" disabled="{{disabled}}"/>
+        </wux-radio-group>
+        <!-- <view class="image">
+            <view  class="name"><text class="sign">*</text>健康码</view>
+            <image class="ph" src="{{src}}" mode="aspectFit"  bindtap="chooseImage"></image>
+        </view> -->
+        <view class="submit" wx:if="{{!upload}}">
+            <button form-type="submit" class="button_change">提交</button>
+        </view>
+    </form>
+    <view class="tips" wx:if="{{upload}}">
+        <image src="../../static/images/selected.png" class="success_img"></image>
+        <view class="tips_text">您已上报健康码</view>
+    </view>
+</view>

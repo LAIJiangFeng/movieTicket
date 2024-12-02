@@ -1,0 +1,28 @@
+<!-- 电影 -->
+<view class="container">
+  <!-- 头部导航 -->
+  <view class="search">
+    <wux-search-bar clear focus show-cancel value="{[query.name]}" placeholder="请输入电影名称" placeholder-style="padding:10rpx" bind:cancel="cancel" bind:change="change" bind:clear="clear"/>
+  </view>
+  
+  <!-- 电影主体 -->
+  <view class="film-body">
+    <view class="film"  wx:for="{{film}}" wx:if="{{film.length>0}}" wx:key="index" mut-bind:tap="goDetails" id="{{item.id}}">
+      <view id="{{item.id}}" class="film-item">
+        <view>
+          <image src="{{url}}{{item.vImg}}" class="film_img" ></image>
+        </view>
+        <view class="film_name" id="{{item.id}}">{{item.name}} <text class="film_version">中国巨幕{{item.version}}</text></view>
+        <view class="film_score">猫眼评分  {{item.score}} <text class="film_type">{{item.type}}</text></view>
+        <view class="film_star">主演:{{item.star}}</view>
+        <view class="film_pNumber"><text style="color: red;">{{item.pNumber}}</text>人想要观看</view>
+      </view>
+    </view>
+    <view class="film" wx:if="{{film.length===0 && loadAll}}">
+      <!-- <view style="font-size:40rpx;text-align:center;">暂无数据...</view> -->
+      <view class="iconfont .icon-kongzhuangtai" style="font-size: 100rpx;text-align: center;margin-top: 15px;"></view>
+      <view  style="text-align: center;margin-top: 5px;">没有找到更多</view>
+    </view>
+    <view  style="color: silver;text-align: center;" wx:if="{{loadAll}}">----------暂无更多----------</view>
+  </view>
+</view>

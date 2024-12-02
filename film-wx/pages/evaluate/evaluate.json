@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wux-cell-group": "../../wux-weapp/cell-group/index",
+    "wux-cell": "../../wux-weapp/cell/index",
+    "wux-rater": "../../wux-weapp/rater/index"
+  },
+  "navigationBarTitleText": "写短评"
+}

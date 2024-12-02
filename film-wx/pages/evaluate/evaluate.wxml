@@ -1,0 +1,19 @@
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class="container">
+  <form class="form" bindsubmit="submit">
+    <view class="film">{{name}}</view>
+    <view style="margin-top: 10rpx;">
+      <view class="star">
+          <view class="star_name">评分</view>
+          <wux-rater default-value="{{filters.toFix1(form.score/2)}}" bind:change="onChange" allowHalf allowTouchMove fontSize="30" class="star_star"/>
+          <view class="wux-rater__text">{{ form.score }} 分</view>
+      </view>
+    </view>
+    <view class="input_view">
+      <textarea type="textarea" placeholder="大家都在问：剧情怎么样，画面好吗，演技如何?" name="content" placeholder-class="placeholder-style" value="{{content}}" class="input" />
+    </view>
+    <view class="submit">
+      <button form-type="submit" class="button_change">发布</button>
+    </view>
+  </form>
+</view>

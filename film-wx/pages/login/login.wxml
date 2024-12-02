@@ -1,0 +1,14 @@
+<wux-toptips id="wux-toptips" />
+<view id="total">
+    <text class="welcome">欢迎购票，请登录</text>
+    <form bindsubmit="create_login">
+        <view id="t2">
+            <text class="iconfont icon-denglu"></text><input type="text" name="username" id="username" placeholder="输入您的账号" value="{{username}}" focus></input>
+        </view>
+        <view id="t3">
+            <text class="iconfont icon-denglumima"></text><input type="password" name="password" id="password" placeholder="输入您的密码" value="{{password}}"></input>
+        </view>
+        <button id="btn1" form-type="submit" loading="{{loading}}" bindtap="getPower"><text>登录</text></button>
+    </form>
+    <view class="register-section">还没有账号?<text bindtap="register">马上注册</text></view>
+</view>

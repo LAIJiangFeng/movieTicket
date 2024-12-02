@@ -1,0 +1,62 @@
+{
+    "pages": [
+        "pages/login/login",
+        "pages/index/index",
+        "pages/test/test",
+        "pages/my/my",
+        "pages/details/details",
+        "pages/film/film",
+        "pages/register/register",
+        "pages/collect/collect",
+        "pages/order/order",
+        "pages/evaluate/evaluate",
+        "pages/healthCode/healthCode",
+        "pages/search/search",
+        "pages/seat/seat"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTitleText": "功能",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "color": "#808080",
+        "selectedColor": "#1E7ACE",
+        "backgroundColor": "#000000",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "/static/images/tabBar/video.png",
+                "selectedIconPath": "/static/images/tabBar/videoshow.png"
+            },
+            {
+                "pagePath": "pages/film/film",
+                "text": "电影/影院",
+                "iconPath": "/static/images/tabBar/film.png",
+                "selectedIconPath": "/static/images/tabBar/filmshow.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "/static/images/tabBar/my.png",
+                "selectedIconPath": "/static/images/tabBar/myshow.png"
+            }
+        ]
+    },
+    "subpackages": [
+        {
+            "root": "other-package",
+            "name": "other-package",
+            "pages": [
+                "pages/modifyPwd/modifyPwd"
+            ]
+        }
+    ],
+    "networkTimeout": {
+        "request": 40000
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

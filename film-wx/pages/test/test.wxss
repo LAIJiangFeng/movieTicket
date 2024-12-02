@@ -1,0 +1,35 @@
+.page{
+  height: 100%;
+  background: #fff;
+  width: 100%;
+}
+/*侧边栏*/
+.sidebar {
+  background: #f5f5f5;
+  box-shadow: 4rpx 4rpx 12px rgba(16, 17, 17, 0.3);
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  overflow: auto;
+  transform: translate(-600rpx,0);
+  transition: transform .3s;
+  top: 0;
+  width: 600rpx;
+  z-index: 100;
+}
+.sidebar.show {
+  transform: translate(0,0);
+}
+.sidebar-shade {
+  background: rgba(0,0,0,.3);
+  display: none;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}

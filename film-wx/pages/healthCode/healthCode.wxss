@@ -1,0 +1,98 @@
+ .container .sign{
+    color: red;
+  }
+ .container .input_view{
+    width: 100%;
+    height: 150rpx;
+    margin-top:25rpx;
+    border-bottom: 1rpx solid #c5c2c2;
+  }
+  .input_view .text{
+    margin-left:30rpx;
+    font-size: 30rpx;
+    color: rgb(179, 179, 179);
+  }
+  .input{
+    border: 1rpx solid #f5f5f5;
+    width: 92%;
+    height: 70rpx;
+    margin-left:30rpx;
+    margin-top: 20rpx;
+    background-color:#f5f5f5;
+    font-size: 29rpx;
+  }
+  .placeholder-style{
+    font-size: 29rpx;
+    margin-left: 20rpx;
+  }
+
+  .uploadImgBox {
+    margin: 30rpx 0;
+   }
+
+  .image{
+    width: 92%;
+    height: 400rpx;
+    border-bottom: 1rpx solid #c5c2c2;
+    margin-left:30rpx;
+  }
+  .name{
+    font-size: 30rpx;
+  }
+  .ph{
+    width: 100%;
+    height: 300rpx;
+    margin-top: 30rpx;
+  }
+  .smallImgBox {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(2,180rpx);
+    grid-gap:20rpx 10rpx;
+  }
+   
+  .moreImg {
+    border-radius: 10rpx;
+    height: 180rpx;
+    width: 180rpx;
+    margin: 20rpx ;
+    margin: auto;
+  }
+  .submit{
+    display: flex;
+    flex-direction: row;
+    height: 150rpx;
+  }
+  .submit .button_change{
+    width: 90%;
+    background:linear-gradient(to right,#0385f5,#17b4db);
+    border: none;
+    color: white;
+    padding: 20rpx 64rpx;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 28rpx;
+    margin-top: 30rpx;
+    border-radius:20rpx ;
+    height: 80rpx;
+  }
+  .tips{
+      text-align: center;
+      width: 100%;
+      height: 100rpx;
+      margin-top: 30rpx;
+      display: flex;
+      justify-content: center;
+  }
+  .success_img{
+      width: 37rpx;
+      height: 37rpx;
+      align-self: center;
+  }
+  .tips_text{
+    align-self: center;
+    font-size: 35rpx;
+    margin-left: 20rpx;
+    color: rgb(69, 201, 87);
+  }

@@ -1,0 +1,6 @@
+<view class="page">
+    <button bindtap="onChange">切换</button>
+    <view>dsadasddddddddddddddddddddddddddddddddddddddd</view>
+</view>
+<view class="sidebar {{open?'show':''}}">侧边栏位</view>
+<view class="sidebar-shade" style="display:{{open?'block':''}}" bindtap="onChange"></view>

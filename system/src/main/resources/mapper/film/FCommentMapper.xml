@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.film.mapper.FCommentMapper">
+    
+    <resultMap type="FComment" id="FCommentResult">
+        <result property="id"    column="id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="nickName"    column="nick_name"    />
+        <result property="filmId"    column="film_id"    />
+        <result property="content"    column="content"    />
+        <result property="score"    column="score"    />
+        <result property="createTime"    column="create_time"    />
+        <!-- 电影属性       -->
+        <result property="name"          column="name"    />
+        <result property="eName"         column="e_name"     />
+        <result property="type"          column="type"   />
+        <result property="director"      column="director"    />
+        <result property="vImg"          column="v_img"      />
+        <result property="poster"        column="poster"    />
+        <result property="pImg"          column="p_img"      />
+        <result property="star"          column="star"    />
+        <result property="version"       column="version"    />
+        <result property="describe"      column="describe"    />
+        <result property="pNumber"       column="p_number"    />
+        <result property="src"           column="src"    />
+        <result property="language"      column="language"    />
+        <result property="duration"      column="duration"    />
+        <result property="released"      column="released"    />
+        <result property="releaseDate"   column="release_date"    />
+        <result property="price"   column="price"    />
+        <result property="status"        column="status"    />
+        <!--用户       -->
+        <result property="avatar"   column="avatar"    />
+    </resultMap>
+
+    <sql id="selectFCommentVo">
+        select c.id, c.user_name, c.nick_name, c.film_id, c.content, c.score, c.create_time,f.*,u.avatar from f_comment c inner join f_film f on c.film_id= f.id
+        inner join sys_user u on c.user_name=u.user_name
+    </sql>
+
+    <select id="selectFCommentList" parameterType="FComment" resultMap="FCommentResult">
+        <include refid="selectFCommentVo"/>
+        <where>  
+            <if test="userName != null  and userName != ''"> and c.user_name like concat('%', #{userName}, '%')</if>
+            <if test="name != null  and name != ''"> and f.name like concat('%', #{name}, '%')</if>
+            <if test="nickName != null  and nickName != ''"> and c.nick_name like concat('%', #{nickName}, '%')</if>
+            <if test="filmId != null "> and c.film_id = #{filmId}</if>
+            <if test="content != null  and content != ''"> and content = #{content}</if>
+            <if test="score != null "> and c.score = #{score}</if>
+        </where>
+        order by c.id desc
+    </select>
+    
+    <select id="selectFCommentById" parameterType="Long" resultMap="FCommentResult">
+        <include refid="selectFCommentVo"/>
+        where c.id = #{id}
+    </select>
+        
+    <insert id="insertFComment" parameterType="FComment" useGeneratedKeys="true" keyProperty="id">
+        insert into f_comment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">user_name,</if>
+            <if test="nickName != null">nick_name,</if>
+            <if test="filmId != null">film_id,</if>
+            <if test="content != null">content,</if>
+            <if test="score != null">score,</if>
+           create_time,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">#{userName},</if>
+            <if test="nickName != null">#{nickName},</if>
+            <if test="filmId != null">#{filmId},</if>
+            <if test="content != null">#{content},</if>
+            <if test="score != null">#{score},</if>
+            sysdate()
+         </trim>
+    </insert>
+
+    <update id="updateFComment" parameterType="FComment">
+        update f_comment
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="nickName != null">nick_name = #{nickName},</if>
+            <if test="filmId != null">film_id = #{filmId},</if>
+            <if test="content != null">content = #{content},</if>
+            <if test="score != null">score = #{score},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteFCommentById" parameterType="Long">
+        delete from f_comment where id = #{id}
+    </delete>
+
+    <delete id="deleteFCommentByIds" parameterType="String">
+        delete from f_comment where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

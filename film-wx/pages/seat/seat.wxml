@@ -1,0 +1,25 @@
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class="container">
+    <view class="screen">
+        影屏
+    </view>
+    <view class="seat_list">
+        <view class="seat" wx:for="{{seatList}}" wx:key="index" data-item="{{item}}" bindtap="selectSeat">
+            <view class="iconfont icon-xuanzhongxuanzhongbeifen" wx:if="{{item.select}}"></view>
+            <view class="iconfont icon-wodedangxuan" wx:if="{{item.disabled}}"></view>
+        </view>
+    </view>
+    <view class="select" style="height: {{selectList.length>0?'190rpx':'100rpx'}};">
+        <view class="name">{{film.name}}</view>
+        <viwe class="seat_info">
+            <view class="item" wx:for="{{selectList}}" wx:key="index">
+                <view class="item_number">座位:{{item.number}}座</view>
+                <view class="item_price">￥{{item.price}}</view>
+            </view>
+        </viwe>
+    </view>
+    <view class="btn" bindtap="buy">
+        <view class="price">￥{{filters.toFix1(film.price * selectList.length)}}</view>
+        <view class="btn-text">购票</view>
+    </view>
+</view>

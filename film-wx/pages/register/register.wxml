@@ -1,0 +1,31 @@
+<view class="container">
+  <form class="form" bindsubmit="submit">
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>昵称</text>
+      <input type="text" placeholder="请输入昵称" name="nickName" placeholder-class="placeholder-style" value="{{nickName}}" class="input" />
+    </view>
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>用户名</text>
+      <input type="text" placeholder="请输入用户名" name="userName" placeholder-class="placeholder-style" value="{{userName}}" class="input" />
+    </view>
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>手机号码</text>
+      <input type="text" placeholder="请输入手机号码" name="phonenumber" placeholder-class="placeholder-style" value="{{phonenumber}}" class="input" />
+    </view>
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>性别</text>
+      <input type="text" placeholder="请输入性别" name="sex" placeholder-class="placeholder-style" value="{{sex}}" class="input" />
+    </view>
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>密码</text>
+      <input type="text" placeholder="请输入密码" name="password" placeholder-class="placeholder-style" value="{{password}}" class="input" />
+    </view>
+    <view class="input_view">
+      <text class="text"><text class="sign">*</text>确认密码</text>
+      <input type="text" placeholder="请输入确认密码" name="confirmPwd" placeholder-class="placeholder-style" value="{{confirmPwd}}" class="input" />
+    </view>
+    <view class="submit">
+      <button form-type="submit" class="button_change">注册</button>
+    </view>
+  </form>
+</view>

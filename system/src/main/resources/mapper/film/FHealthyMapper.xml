@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.film.mapper.FHealthyMapper">
+    
+    <resultMap type="FHealthy" id="FHealthyResult">
+        <result property="id"    column="id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="nickName"    column="nick_name"    />
+        <result property="phone"    column="phone"    />
+        <result property="img"    column="img"    />
+        <result property="temperatureStatus"    column="temperature_status"    />
+        <result property="healthCodeColor"    column="health_code_color"    />
+        <result property="bodyStatus"    column="body_status"    />
+        <result property="inoculationStatus"    column="inoculation_status"    />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectFHealthyVo">
+        select id, user_name, nick_name, phone, temperature_status,health_code_color,body_status,inoculation_status,img,create_time from f_healthy
+    </sql>
+
+    <select id="selectFHealthyList" parameterType="FHealthy" resultMap="FHealthyResult">
+        <include refid="selectFHealthyVo"/>
+        <where>  
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="nickName != null  and nickName != ''"> and nick_name like concat('%', #{nickName}, '%')</if>
+            <if test="phone != null  and phone != ''"> and phone = #{phone}</if>
+            <if test="img != null  and img != ''"> and img = #{img}</if>
+            <if test="temperatureStatus != null  and temperatureStatus != ''"> and temperature_status = #{temperatureStatus}</if>
+            <if test="healthCodeColor != null  and healthCodeColor != ''"> and health_code_color = #{healthCodeColor}</if>
+            <if test="bodyStatus != null  and bodyStatus != ''"> and body_status = #{bodyStatus}</if>
+            <if test="inoculationStatus != null  and inoculationStatus != ''"> and inoculation_status = #{inoculationStatus}</if>
+        </where>
+    </select>
+    
+    <select id="selectFHealthyById" parameterType="Long" resultMap="FHealthyResult">
+        <include refid="selectFHealthyVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertFHealthy" parameterType="FHealthy" useGeneratedKeys="true" keyProperty="id">
+        insert into f_healthy
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName != null">user_name,</if>
+            <if test="nickName != null">nick_name,</if>
+            <if test="phone != null">phone,</if>
+            <if test="img != null">img,</if>
+            <if test="temperatureStatus != null">temperature_status,</if>
+            <if test="healthCodeColor != null">health_code_color,</if>
+            <if test="bodyStatus != null">body_status,</if>
+            <if test="inoculationStatus != null">inoculation_status,</if>
+            create_time,
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName != null">#{userName},</if>
+            <if test="nickName != null">#{nickName},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="img != null">#{img},</if>
+            <if test="temperatureStatus != null">#{temperatureStatus},</if>
+            <if test="healthCodeColor != null">#{healthCodeColor},</if>
+            <if test="bodyStatus != null">#{bodyStatus},</if>
+            <if test="inoculationStatus != null">#{inoculationStatus},</if>
+            sysdate()
+         </trim>
+    </insert>
+
+    <update id="updateFHealthy" parameterType="FHealthy">
+        update f_healthy
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="nickName != null">nick_name = #{nickName},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="img != null">img = #{img},</if>
+            <if test="temperatureStatus != null">temperature_status= #{temperatureStatus},</if>
+            <if test="healthCodeColor != null">health_code_color= #{healthCodeColor},</if>
+            <if test="bodyStatus != null">body_status= #{bodyStatus},</if>
+            <if test="inoculationStatus != null">inoculation_status= #{inoculationStatus},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteFHealthyById" parameterType="Long">
+        delete from f_healthy where id = #{id}
+    </delete>
+
+    <delete id="deleteFHealthyByIds" parameterType="String">
+        delete from f_healthy where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectUploadFHealthy" parameterType="String" resultMap="FHealthyResult">
+        <include refid="selectFHealthyVo"/>
+        where user_name=#{userName} and DATE_SUB(sysdate(),INTERVAL 1 day) &lt; create_time limit 1
+    </select>
+</mapper>

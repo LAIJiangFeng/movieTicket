@@ -1,0 +1,40 @@
+<wxs module="filters" src="../../utils/util.wxs"></wxs>
+<view class="container">
+  <view class="film">
+    <view id="{{film.id}}" class="film-body">
+        <view style="height: 300rpx;width: 35%;">
+          <image src="{{url}}{{film.vImg}}" class="film_img" ></image>
+        </view>
+        <view style="height: 300rpx;width: 65%;">
+          <view class="film_name" id="{{film.id}}">{{film.name}}</view>
+          <view class="film_ename" id="{{film.id}}">{{film.eName}} </view>
+          <view class="film_director">导演 {{film.director}}</view>
+          <view class="film_score">猫眼评分  {{film.score}} <text class="film_type">{{film.type}}</text> <text class="film_version">中国巨幕{{film.version}}</text></view>
+          <view class="film_release_date">{{film.releaseDate}} 中国大陆上映 <text> {{film.duration}}分钟</text></view>
+          <view class="film-btn" bindtap="collect" data-id="{{film.id}}" data-collect="{{film.collect}}" wx:if="{{!film.collect}}"><text class="iconfont icon-shoucang1"></text>收藏</view>
+          <view class="film-btn like_color" bindtap="collect" data-id="{{film.id}}" data-collect="{{film.collect}}" wx:if="{{film.collect}}"><text class="iconfont icon-shoucang1"></text>已收藏</view>
+        </view>
+    </view>
+    <view >
+      <view class="film_describe_t">简介</view>
+      <view class="film_describe"><text decode="{{true}}"> &nbsp;&nbsp;&nbsp;&nbsp;{{film.describe}}</text></view>
+    </view>
+  </view>
+  <view class="content" style="height: {{content.length>2? 45+(content.length-2)*15+'%':45+'%'}}">
+    <view class="content_title">观众热评<text class="content_count">（{{content.length}}）</text></view>
+    <view class="user" wx:for="{{content}}" wx:key="id">
+      <view class="user_to">
+        <image src="{{item.avatar?url+item.avatar:'../../static/images/toxiang.png' }}" class="avatar" ></image>
+        <view class="user_right">
+          <view class="name">{{item.nickName}}</view>
+          <wux-rater slot="footer" default-value="{{filters.toFix1(item.score/2)}}"  class="score" fontSize="18"/>
+          <text class="wux-rater__text">{{item.score}} 分</text>
+        </view>
+        <view class="time">{{item.createTime}}</view>
+      </view>
+      <view class="text">{{item.content}}</view>
+    </view>
+    <view  style="color: silver;text-align: center;" wx:if="{{loadAll}}">-------------暂无更多评论-------------</view>
+  </view>
+</view>
+<view class="btn" id="{{film.id}}" wx:if="{{film.released==1}}" bindtap="buy"><text class="btn-text">购票<text class="price">({{film.price}}/元)</text></text></view>

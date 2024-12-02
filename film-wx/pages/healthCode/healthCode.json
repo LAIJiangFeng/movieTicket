@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "wux-radio-group": "../../wux-weapp/radio-group/index",
+    "wux-radio": "../../wux-weapp/radio/index"
+  },   
+   "navigationBarTitleText": "健康上报"
+}

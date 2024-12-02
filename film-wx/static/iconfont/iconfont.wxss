@@ -1,0 +1,130 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2707581 */
+  src: url('//at.alicdn.com/t/c/font_2707581_62i71qpzgti.woff2?t=1672406854923') format('woff2'),
+       url('//at.alicdn.com/t/c/font_2707581_62i71qpzgti.woff?t=1672406854923') format('woff'),
+       url('//at.alicdn.com/t/c/font_2707581_62i71qpzgti.ttf?t=1672406854923') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shoucang1:before {
+  content: "\e658";
+}
+
+.icon-shoucang:before {
+  content: "\e627";
+}
+
+.icon-shoudongchufaqi:before {
+  content: "\e63f";
+}
+
+.icon-shanchu:before {
+  content: "\e714";
+}
+
+.icon-nengyuanzutaitu:before {
+  content: "\e60f";
+}
+
+.icon-tingzhi:before {
+  content: "\e62a";
+}
+
+.icon-xinjian:before {
+  content: "\e618";
+}
+
+.icon-jurassic_start:before {
+  content: "\e6c1";
+}
+
+.icon-xiangqing:before {
+  content: "\e611";
+}
+
+.icon-xiugai:before {
+  content: "\e651";
+}
+
+.icon-search:before {
+  content: "\e6b9";
+}
+
+.icon-zutaiyingyong:before {
+  content: "\e619";
+}
+
+.icon-xuanzhongxuanzhongbeifen:before {
+  content: "\e659";
+}
+
+.icon-x:before {
+  content: "\e73e";
+}
+
+.icon-kongzhuangtai:before {
+  content: "\e696";
+}
+
+.icon-lishi:before {
+  content: "\e6c8";
+}
+
+.icon-jiankong:before {
+  content: "\e77f";
+}
+
+.icon-icon_fasongzhiling:before {
+  content: "\e642";
+}
+
+.icon-shebeiditu:before {
+  content: "\e605";
+}
+
+.icon-shebeibaoxiu:before {
+  content: "\e675";
+}
+
+.icon-line:before {
+  content: "\e720";
+}
+
+.icon-shuju:before {
+  content: "\e668";
+}
+
+.icon-yangqiping:before {
+  content: "\e617";
+}
+
+.icon-denglu:before {
+  content: "\e621";
+}
+
+.icon-wodedangxuan:before {
+  content: "\e600";
+}
+
+.icon-denglumima:before {
+  content: "\e634";
+}
+
+.icon-Iconoutlinehome:before {
+  content: "\e601";
+}
+
+.icon-icon-life-alarm:before {
+  content: "\e602";
+}
+
+.icon-denglu1:before {
+  content: "\e682";
+}

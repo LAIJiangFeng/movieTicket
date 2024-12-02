@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "wux-toptips": "../../../wux-weapp/toptips/index"
+  },
+  "navigationBarTitleText": "密码修改"
+}

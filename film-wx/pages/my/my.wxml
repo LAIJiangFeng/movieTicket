@@ -1,0 +1,45 @@
+<view class="bg">
+ <view class="header">
+  <view class="headIcon">
+    <image src="{{headerUrl}}" style="width:100px;height:100px;"></image>
+    <text>{{name}}</text>
+  </view>
+ </view>
+</view>
+
+ <view class="hr"></view>
+ <view class="item" bindtap="goOrder">
+  <view class="title">我的订单</view>
+  <view class="detail">
+    <text>></text>
+  </view>
+ </view>
+
+ <view class="item" bindtap="goCollect">
+  <view class="title">我的收藏</view>
+  <view class="detail">
+    <text>></text>
+  </view>
+ </view>
+
+
+ <view class="hr"></view>
+ <view class="item" bindtap="modifyPwd">
+  <view class="title">密码修改</view>
+  <view class="detail">
+    <text>></text>
+  </view>
+ </view>
+
+ <view class="item" bindtap="goHealthCode">
+  <view class="title">健康码上报</view>
+  <view class="detail">
+    <text>></text>
+  </view>
+ </view>
+
+ <view class="hr"></view>
+ <view class="logout" bindtap="logout">
+  <button>退出登录</button>
+ </view>
+

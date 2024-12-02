@@ -1,0 +1,48 @@
+<!-- 侧边栏 -->
+<view class="sidebar {{isHidden?'':'show'}}">
+    <view class="tree_style" hidden="{{isHidden}}">
+      <tree
+        dataTree="{{dataTree}}"
+        selectKey="{{selectKey}}"
+        bind:select="handleSelect"
+        isSelectLastNode="false"
+        isOpenAll="false"
+      ></tree>
+    </view>
+  </view>
+  <view class="sidebar-shade" style="display:{{isHidden?'':'block'}}" bindtap="isHiddenMenu"></view>
+
+<!-- 电影 -->
+<view class="container">
+  <!-- 头部导航 -->
+  <view class="menu">
+    <image src="../../static/images/zk.png"  class="show" bindtap="isHiddenMenu" ></image>
+    <view style="margin-left: 36%;position: absolute;" class="title-text {{query.released==1?'title-select':''}}" bindtap="selectType" data-index="1">热映</view>
+    <view style="margin-left: 53%;position: absolute;" class="title-text {{query.released==0?'title-select':''}}" bindtap="selectType" data-index="0">待映</view>
+    <view class="iconfont icon-search"  style="margin-left: 90%;position: absolute; align-self: center;font-size: 45rpx;" bindtap="search"></view>
+  </view>
+  
+  <!-- 电影主体 -->
+  <view class="film-body">
+    <view class="film"  wx:for="{{film}}" wx:if="{{film.length>0}}" wx:key="index" mut-bind:tap="goDetails" id="{{item.id}}">
+      <view id="{{item.id}}" class="film-item">
+        <view>
+          <image src="{{url}}{{item.vImg}}" class="film_img" ></image>
+        </view>
+        <view class="film_name" id="{{item.id}}">{{item.name}} <text class="film_version">中国巨幕{{item.version}}</text></view>
+        <view class="film_score">猫眼评分  {{item.score}} <text class="film_type">{{item.type}}</text></view>
+        <view class="film_star">主演:{{item.star}}</view>
+        <view class="film_pNumber"><text style="color: red;">{{item.pNumber}}</text>人想要观看</view>
+        <view class="film-btn" id="{{item.id}}" wx:if="{{query.released==1}}" mut-bind:tap="buy" data-film="{{item}}" >购票</view>
+        <view class="film-btn btn-color" mut-bind:tap="collect" data-id="{{item.id}}" data-collect="{{item.collect}}" data-index="{{index}}"  wx:if="{{query.released==0 && !item.collect}}">收藏</view>
+        <view class="film-btn btn-color2" mut-bind:tap="collect" data-id="{{item.id}}" data-collect="{{item.collect}}" data-index="{{index}}"  wx:if="{{query.released==0  && item.collect}}" style="width: 110rpx">已收藏</view>
+      </view>
+    </view>
+    <view class="film" wx:if="{{film.length===0}}">
+      <!-- <view style="font-size:40rpx;text-align:center;">暂无数据...</view> -->
+      <view class="iconfont .icon-kongzhuangtai" style="font-size: 100rpx;text-align: center;margin-top: 15px;"></view>
+      <view  style="text-align: center;margin-top: 5px;">暂无影片</view>
+    </view>
+    <view  style="color: silver;text-align: center;" wx:if="{{loadAll}}">----------暂无更多----------</view>
+  </view>
+</view>

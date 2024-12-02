@@ -1,0 +1,118 @@
+page{
+    width: 100%;
+    height: 100%;
+    /* display: flex;
+    flex-direction: row; */
+    background-color: #f4f5f6;
+}
+.screen{
+    border: 1rpx solid #babcbd;
+    border-radius: 10rpx;
+    width: 280px;
+    height: 100px;
+    margin: auto;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(122, 121, 121);
+    background-color: #fff;
+}
+
+.seat_list{
+    width: 92%;
+    margin-left: 4%;
+    background-color: #fff;
+    margin: auto;
+    margin-top: 60rpx;
+    height: 390rpx;
+}
+.seat{
+    width: 7%;
+    margin-left: 2.2%;
+    height: 40rpx;
+    margin-top: 10rpx;
+    border: 1rpx solid #babcbd;
+    float: left;
+    border-radius: 6rpx;
+}
+.iconfont{
+    text-align: center;
+    font-size: 40rpx;
+    color: rgb(16, 158, 16);
+}
+
+.icon-wodedangxuan{
+    color: rgb(158, 108, 16);
+}
+
+.select{
+    position: fixed;
+    bottom: 0;
+    width:96% ;
+    height: 100rpx;
+    margin-left: 2%;
+    margin-bottom: 125rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+.name{
+    width: 92%;
+    padding: 10rpx 0rpx;
+    font-size:30rpx;
+    margin-top:10rpx;
+    margin-left: 4%;
+    border-bottom: 1rpx solid #cacccf;
+    font-weight: 600;
+}
+
+.seat_info{
+    width: 92%;
+    margin-left: 4%;
+    margin-top: 20rpx;
+    height: 80rpx;
+    display: flex;
+}
+
+.item{
+    width: 19%;
+    margin-left: 1%;
+    height: 80rpx;
+    background-color: #f4f5f6;
+}
+
+.item_number{
+    font-size: 25rpx;
+    text-align: center;
+}
+.item_price{
+    margin-top: 5rpx;
+    text-align: center;
+    font-size: 25rpx;
+}
+
+.btn{
+    /* position: absolute;
+    z-index: 100; */
+    position: fixed;
+    width: 96%;
+    height:80rpx;
+    bottom: 0;
+    margin-left: 2%;
+    margin-bottom: 30rpx;
+    background-color: #e2a520;
+    border-radius: 50rpx;
+    text-align: center;
+    font-size: 38rpx;
+    font-weight: 400;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+  }
+  .btn-text{
+    align-self: center;
+    margin-left: 20rpx;
+  }
+  .price{
+    font-size: 38rpx;
+    align-self:center;
+  }
